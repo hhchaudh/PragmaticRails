@@ -1,9 +1,15 @@
 <h1><%= pluralize(@events.size, 'Event')%> </h1>
 
+<%= link_to "Add New Event", new_event_path %>
+
 <% @events.each do |event| %>
   <article>
     <header>
-      <h2><%= event.name %></h2>
+    <%# event means event_path(event.id) %>
+    <%# Note these image tags used to display the image %>
+      <%= image_for(event) %>
+      <h2><%= link_to(event.name, event) %></h2>
+      <h3><%= pluralize(event.capacity, "spot")%></h3>
     </header>
     <p>
       <%= event.description %>
